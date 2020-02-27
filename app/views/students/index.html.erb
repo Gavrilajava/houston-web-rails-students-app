@@ -1,0 +1,10 @@
+<h1>All our Students:</h1>
+
+<%= form_for(@instances.sample, url: new_student_path, method: :get) do |f| %>
+  <%= f.submit "Create New"%>
+<% end %>
+<ul>
+<%@instances.each { |instance|%>
+  <li> <%= link_to  instance.name, student_path(instance) %> </li>
+<%}%>
+</ul>

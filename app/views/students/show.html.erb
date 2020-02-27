@@ -1,0 +1,27 @@
+<h1>Student Page</h1>
+
+<label>Name: <%= @instance.name %> </label>
+<label>Major: <%= @instance.major %> </label>
+<label>Age: <%= @instance.age %> </label>
+
+<%if @instance.instructor%>
+  <%= link_to  @instance.instructor.name, instructor_path(@instance.instructor) %>
+<%else%>
+  <label id="error">Warning, no instructor attached</label>
+<%end%>
+
+<br>
+<%= form_for(@instance, url: edit_student_path(@instance), method: :get) do |f| %>
+  <%= f.submit "Edit"%>
+<% end %>
+<br>
+<%= form_for(@instance, url: student_path(@instance), method: :delete) do |f| %>
+  <%= f.submit "Delete"%>
+<% end %>
+<br>
+<%= form_for(@instance, url: students_path, method: :get) do |f| %>
+  <%= f.submit "Return to list"%>
+<% end %>
+<br>
+
+

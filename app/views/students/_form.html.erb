@@ -1,0 +1,20 @@
+<%if flash[:errors]%>
+  <ul id = "error">
+  <%flash[:errors].each { |error|%>
+    <li>
+    <%=error%>
+    </li>
+  <%}%>
+  </ul>
+<%end%>
+
+<%= form_for @instance do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :major %>
+  <%= f.text_field :major %>
+  <%= f.label :age %>
+  <%= f.text_field :age %>
+  <%= f.collection_select :instructor_id, @instructors, :id, :name%>
+  <%= f.submit %>
+<% end %>

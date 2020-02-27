@@ -1,0 +1,25 @@
+<h1>Instructor Page</h1>
+
+<label>Name: <%= @instance.name %> </label>
+
+<br>
+<%= form_for(@instance, url: edit_instructor_path(@instance), method: :get) do |f| %>
+  <%= f.submit "Edit"%>
+<% end %>
+<br>
+<%= form_for(@instance, url: instructor_path(@instance), method: :delete) do |f| %>
+  <%= f.submit "Delete"%>
+<% end %>
+<br>
+<%= form_for(@instance, url: instructors_path, method: :get) do |f| %>
+  <%= f.submit "Return to list"%>
+<% end %>
+<br>
+
+<label>Students</label>
+<ul>
+<%@instance.students.each { |student|%>
+  <li><%= link_to  student.name, student_path(student) %></li>
+<%}%>
+</ul>
+
